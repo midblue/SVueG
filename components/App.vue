@@ -3,7 +3,6 @@
     <SVueG
       id="testSVG"
     >
-      test
     </SVueG>
   </div>
 </template>
@@ -18,8 +17,7 @@ export default {
   },
   computed: {},
   mounted () {},
-  methods: {
-  }
+  methods: {}
 }
 </script>
 

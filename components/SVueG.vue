@@ -3,6 +3,7 @@
     :width="width"
     :height="height"
     :viewBox="`0 0 ${width} ${height}`"
+    :style="`background: ${bg};`"
     version="1.1"
     xmlns="http://www.w3.org/2000/svg"
     xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -19,14 +20,29 @@
       :length="100"
       :angle="10"
     />
+    <vEllipse
+      :x="90"
+      :y="70"
+      :width="30"
+      :height="50"
+      :angle="45"
+    />
   </svg>
 </template>
 
 <script>
-import vLine from './vLine'
+import vLine from './Line'
+import vEllipse from './Ellipse'
 
 export default {
-  components: { vLine, },
+  components: { vLine, vEllipse },
+  props: {
+    bg: {
+      type: String,
+      required: false,
+      default: null,
+    },
+  },
   data () {
     return {
       objectRect: {
@@ -49,8 +65,5 @@ export default {
 </script>
 
 <style scoped lang="scss">
-#app {
-  
-}
 
 </style>

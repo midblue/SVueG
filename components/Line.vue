@@ -2,18 +2,18 @@
   <g>
     <path
       v-if="endX && endY"
-      :d="`M${x},${y} L${endX},${endY}`"
       class="line"
-      :stroke="color"
-      :width="width"
+      :d="`M${x},${y} L${endX},${endY}`"
+      :stroke="stroke"
+      :width="strokeWidth"
       stroke-linecap="round">
     </path>
     <path
       v-else-if="length && angle"
-      :d="`M${x},${y} L${length * Math.cos(angleRad) + x},${length * Math.sin(angleRad) + y}`"
       class="line"
-      :stroke="color"
-      :width="width"
+      :d="`M${x},${y} L${length * Math.cos(angleRad) + x},${length * Math.sin(angleRad) + y}`"
+      :stroke="stroke"
+      :width="strokeWidth"
       stroke-linecap="round">
     </path>
   </g>
@@ -23,12 +23,12 @@
 
 export default {
   props: {
-    color: {
+    stroke: {
       type: String,
       required: false,
       default: '#999'
     },
-    width: {
+    strokeWidth: {
       type: Number,
       required: false,
       default: 1,
@@ -73,8 +73,5 @@ export default {
 </script>
 
 <style scoped lang="scss">
-#app {
-  
-}
 
 </style>

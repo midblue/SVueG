@@ -1,22 +1,19 @@
 <template>
-  <g>
-    <ellipse
-      class="ellipse"
-      :stroke="stroke"
-      :stroke-width="strokeWidth"
-      :fill="fill"
-      :cx="x"
-      :cy="y"
-      :rx="width"
-      :ry="height"
-      :transform="`translate(${x}, ${y}) rotate(${angle})`"
-      >
-    </ellipse>
-  </g>
+  <ellipse
+    class="ellipse"
+    :stroke="stroke"
+    :stroke-width="strokeWidth"
+    :fill="fill"
+    :cx="x"
+    :cy="y"
+    :rx="width / 2"
+    :ry="height / 2"
+    >
+  </ellipse>
 </template>
 
 <script>
-
+//:transform="`rotate(${angle})`"
 export default {
   props: {
     stroke: {
@@ -39,17 +36,21 @@ export default {
     width: {
       type: Number,
       required: false,
-      default: 1,
+      default: 1
     },
     height: {
       type: Number,
       required: false,
-      default: 1,
+      default: 1
     },
     angle: {
       type: Number,
       required: false,
       default: 0
+    },
+    rect: {
+      type: DOMRect,
+      required: false
     }
   },
   data () {

@@ -1,22 +1,16 @@
 <template>
-  <g>
-    <path
-      v-if="endX && endY"
-      class="line"
-      :d="`M${x},${y} L${endX},${endY}`"
-      :stroke="stroke"
-      :width="strokeWidth"
-      stroke-linecap="round">
-    </path>
-    <path
-      v-else-if="length && angle"
-      class="line"
-      :d="`M${x},${y} L${length * Math.cos(angleRad) + x},${length * Math.sin(angleRad) + y}`"
-      :stroke="stroke"
-      :width="strokeWidth"
-      stroke-linecap="round">
-    </path>
-  </g>
+  <path
+    v-if="(endX && endY) || (length && angle)"
+    class="line"
+    :d="endX && endY ? 
+      `M${x},${y} L${endX},${endY}`
+      : length && angle ? 
+      `M${x},${y} L${length * Math.cos(angleRad) + x},${length * Math.sin(angleRad) + y}`
+      : ''"
+    :stroke="stroke"
+    :width="strokeWidth"
+    stroke-linecap="round">
+  </path>
 </template>
 
 <script>
@@ -55,6 +49,10 @@ export default {
     angle: {
       type: Number,
       required: false,
+    },
+    rect: {
+      type: DOMRect,
+      required: false
     }
   },
   data () {
